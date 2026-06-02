@@ -14,7 +14,10 @@ def main():
 
     print(final)
 
-
+    #using numpy
+    final2 = np.random.randint(low=(20,40,0) , high=(45,90,300) , size=(4,12,3))  # 4 ctities 12 moths and 3 readings
+    print(final2)
+    print(final2[0][0]) #kamra janaury temparatur
 
 if __name__ == "__main__":
     main()
