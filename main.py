@@ -12,7 +12,15 @@ def get_data():
 
     return final2
 
+def avg(data):
+    all_temp = data [:,:,0]
+    avg = np.round(np.mean(all_temp , 1) , 2)     
+    avg_all =  np.round(np.mean(avg) ,2)
+
+    return avg , avg_all
+
 def main():
     temp = get_data()
+    
 if __name__ == "__main__":
     main()
