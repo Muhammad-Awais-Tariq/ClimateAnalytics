@@ -31,6 +31,10 @@ def min_humidity(data):
     index = np.min(minimum_humidity)
     return  minimum_humidity  , index
 
+def std_temp(data):
+    required_Data = data [:,:,0]
+    standard_temp = np.std(required_Data ,1)
+    return  standard_temp
 
 def main():
     complete_data = get_data()
