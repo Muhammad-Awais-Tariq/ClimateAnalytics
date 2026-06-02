@@ -25,6 +25,13 @@ def max_rain(data):
     index = np.argmax(max_rainfall)
     return max_rainfall , index
 
+def min_humidity(data):
+    required_Data = data [:,:,2]
+    minimum_humidity = np.min(required_Data ,1)
+    index = np.min(minimum_humidity)
+    return  minimum_humidity  , index
+
+
 def main():
     complete_data = get_data()
 
