@@ -39,11 +39,11 @@ def compare_months_rainfall(data):
     first_6_months = data[:,0:6, 2]
     last_6_months = data[:,6:,2]
     if first_6_months.sum() > last_6_months.sum():
-        print("Summer has more rainfall")
+        return "Summer has more rainfall"
     elif last_6_months.sum() > first_6_months.sum():
-        print("winter has more rainfall")
+        return "winter has more rainfall"
     else:
-        print("Both summer and winter has equal amount of rain")
+        return "Both summer and winter has equal amount of rain"
 
 def compare_temp(data , city1 , city2):
     cities = {"Kamra" : 0 , "Islamabad" : 1 , "Karachi" : 2 , "Kohat" : 3}
@@ -51,13 +51,12 @@ def compare_temp(data , city1 , city2):
     city2_avg = np.round(np.average(data[cities[city2] , : , 0]) ,2 )
     
     if city1_avg > city2_avg:
-        print(f"{city1} is hotter")
+        return f"{city1} is hotter"
     elif city2_avg > city1_avg:
-        print(f"{city2} is hotter")
+        return f"{city2} is hotter"
 
 def main():
     complete_data = get_data()
-    compare_temp(complete_data , "Kamra" , "Kohat")
 
 if __name__ == "__main__":
     main()
