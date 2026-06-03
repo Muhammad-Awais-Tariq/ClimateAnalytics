@@ -4,7 +4,6 @@ def get_data():
     """
     This function generates the data of 4 cities randomly and then returns that in the form of the numpy array
     """
-    cities = {"Kamra" : 0 , "Islamabad" : 1 , "Karachi" : 2 , "Kohat" : 3}
     months = ["Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug"  , "Sep" , "Oct" , "Nov" , "Dec"]
 
     #using numpy
@@ -45,10 +44,20 @@ def compare_months_rainfall(data):
         print("winter has more rainfall")
     else:
         print("Both summer and winter has equal amount of rain")
-        
+
+def compare_temp(data , city1 , city2):
+    cities = {"Kamra" : 0 , "Islamabad" : 1 , "Karachi" : 2 , "Kohat" : 3}
+    city1_avg = np.round(np.average(data[cities[city1] , : , 0]) ,2 )
+    city2_avg = np.round(np.average(data[cities[city2] , : , 0]) ,2 )
+    
+    if city1_avg > city2_avg:
+        print(f"{city1} is hotter")
+    elif city2_avg > city1_avg:
+        print(f"{city2} is hotter")
+
 def main():
     complete_data = get_data()
-    compare_months_rainfall(complete_data)
+    compare_temp(complete_data , "Kamra" , "Kohat")
 
 if __name__ == "__main__":
     main()
