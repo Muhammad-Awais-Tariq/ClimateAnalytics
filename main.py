@@ -36,8 +36,19 @@ def std_temp(data):
     standard_temp = np.std(required_Data ,1)
     return  standard_temp
 
+def compare_months_rainfall(data):
+    first_6_months = data[:,0:6, 2]
+    last_6_months = data[:,6:,2]
+    if first_6_months.sum() > last_6_months.sum():
+        print("Summer has more rainfall")
+    elif last_6_months.sum() > first_6_months.sum():
+        print("winter has more rainfall")
+    else:
+        print("Both summer and winter has equal amount of rain")
+        
 def main():
     complete_data = get_data()
+    compare_months_rainfall(complete_data)
 
 if __name__ == "__main__":
     main()
