@@ -4,7 +4,7 @@ def get_data():
     """
     This function generates the data of 4 cities randomly and then returns that in the form of the numpy array
     """
-    cities = ["Kamra" , "Islamabad" , "Karachi" , "Kohat"]
+    cities = {"Kamra" : 0 , "Islamabad" : 1 , "Karachi" : 2 , "Kohat" : 3}
     months = ["Jan" , "Feb" , "Mar" , "Apr" , "May" , "Jun" , "Jul" , "Aug"  , "Sep" , "Oct" , "Nov" , "Dec"]
 
     #using numpy
