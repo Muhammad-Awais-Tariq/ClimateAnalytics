@@ -24,13 +24,13 @@ def avg(data):
 def max_rain(data):
     required_Data = data [:,:,1]
     max_rainfall = np.max(required_Data ,1)
-    index = np.argmax(max_rainfall)
+    index = np.argmax(required_Data ,1 )
     return max_rainfall , index
 
 def min_humidity(data):
     required_Data = data [:,:,2]
     minimum_humidity = np.min(required_Data ,1)
-    index = np.min(minimum_humidity)
+    index = np.argmin(required_Data , 1)
     return  minimum_humidity  , index
 
 def std_temp(data):
@@ -58,15 +58,11 @@ def compare_temp(data , city1 , city2):
         return f"{city2} is hotter"
 
 def hottest_month(data):
-    hottest = 0
-    idx = 0
-    for i in range(12):
-        required_data = data[:,i,0]
-        current_avg = np.average(required_data)
-        if current_avg > hottest:
-            hottest = current_avg
-            idx = i
-    print(f"The hottest month is {months[idx]} with an average temperature of {hottest}")
+    average = np.average(data[:,:,0],0)
+    maximum_temp = np.max(average)
+    maximum_temp_idx = np.argmax(average)
+    print(f"The hottest month is {months[maximum_temp_idx]} with an average temp of {maximum_temp}")
+
 
 def main():
     complete_data = get_data()
