@@ -63,10 +63,15 @@ def hottest_month(data):
     maximum_temp_idx = np.argmax(average)
     print(f"The hottest month is {months[maximum_temp_idx]} with an average temp of {maximum_temp}")
 
+def coldest_month(data):
+    average = np.average(data[:,:,0],0)
+    minimum_temp = np.min(average)
+    minimum_temp_idx = np.argmin(average)
+    print(f"The coldest month is {months[minimum_temp_idx]} with an average temp of {minimum_temp}")  
 
 def main():
     complete_data = get_data()
-    hottest_month(complete_data)
+    coldest_month(complete_data)
 
 if __name__ == "__main__":
     main()
