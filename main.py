@@ -57,9 +57,20 @@ def compare_temp(data , city1 , city2):
     elif city2_avg > city1_avg:
         return f"{city2} is hotter"
 
+def hottest_month(data):
+    hottest = 0
+    idx = 0
+    for i in range(12):
+        required_data = data[:,i,0]
+        current_avg = np.average(required_data)
+        if current_avg > hottest:
+            hottest = current_avg
+            idx = i
+    print(f"The hottest month is {months[idx]} with an average temperature of {hottest}")
+
 def main():
     complete_data = get_data()
-
+    hottest_month(complete_data)
 
 if __name__ == "__main__":
     main()
