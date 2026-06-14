@@ -108,6 +108,12 @@ def get_rain_above_threshold(df , amount):
     rain_df = df[df.Rainfall > amount][["City" , "Month" , "Rainfall"]]
     print(rain_df)
 
+def get_hottest_city(df):
+    city_temp_mean = df.groupby("City")[["Temperature"]].mean()
+    hottest_city = city_temp_mean.sort_values("Temperature" , ascending=False)
+    print(hottest_city)
+
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
     # print(weather_df.info())
@@ -117,7 +123,9 @@ def main():
     # print(weather_df.head())
     # get_city_data(weather_df , "Kamra")
     # get_weather_partition(weather_df , 1)
-    get_rain_above_threshold(weather_df , 100)
+    # get_rain_above_threshold(weather_df , 100)
+    get_hottest_city(weather_df)
+
 
 if __name__ == "__main__":
     main()
