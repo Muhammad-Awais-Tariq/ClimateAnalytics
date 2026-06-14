@@ -121,6 +121,10 @@ def get_avg_temp_per_city(df):
     city_temp_mean = df.groupby("City")[["Temperature"]].mean()
     print(city_temp_mean)
 
+def get_yearly_rainfall(df):
+    total_rainfall = df.groupby("City")[["Rainfall"]].sum()
+    print(total_rainfall)
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
     # print(weather_df.info())
@@ -133,7 +137,8 @@ def main():
     # get_rain_above_threshold(weather_df , 100)
     # get_hottest_city(weather_df)
     # get_lowest_rainfall(weather_df)
-    get_avg_temp_per_city(weather_df)
+    # get_avg_temp_per_city(weather_df)
+    get_yearly_rainfall(weather_df)
 
 if __name__ == "__main__":
     main()
