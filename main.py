@@ -117,6 +117,10 @@ def get_lowest_rainfall(df):
     lowest_rainfall = df.sort_values("Rainfall")[["City" , "Rainfall"]].head(10)
     print(lowest_rainfall)
 
+def get_avg_temp_per_city(df):
+    city_temp_mean = df.groupby("City")[["Temperature"]].mean()
+    print(city_temp_mean)
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
     # print(weather_df.info())
@@ -128,7 +132,8 @@ def main():
     # get_weather_partition(weather_df , 1)
     # get_rain_above_threshold(weather_df , 100)
     # get_hottest_city(weather_df)
-    get_lowest_rainfall(weather_df)
+    # get_lowest_rainfall(weather_df)
+    get_avg_temp_per_city(weather_df)
 
 if __name__ == "__main__":
     main()
