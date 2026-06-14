@@ -94,7 +94,11 @@ def unusual_rainfall(data):
         
 def main():
     weather_df = get_csv("climate_data(1).csv")
-    print(weather_df)
+    print(weather_df.info())
+    print(weather_df.describe())
+    print(weather_df.columns)
+    print(weather_df.shape)
+    print(weather_df.head())
 
 if __name__ == "__main__":
     main()
