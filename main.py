@@ -104,6 +104,10 @@ def get_weather_partition(df , weather): # 0 for summer 1 for winter
     city_df = new_df.groupby("City")[["Temperature" , "Humidity" , "Rainfall"]].mean()
     print(city_df)
 
+def get_rain_above_threshold(df , amount):
+    rain_df = df[df.Rainfall > amount][["City" , "Month" , "Rainfall"]]
+    print(rain_df)
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
     # print(weather_df.info())
@@ -112,7 +116,8 @@ def main():
     # print(weather_df.shape)
     # print(weather_df.head())
     # get_city_data(weather_df , "Kamra")
-    get_weather_partition(weather_df , 1)
+    # get_weather_partition(weather_df , 1)
+    get_rain_above_threshold(weather_df , 100)
 
 if __name__ == "__main__":
     main()
