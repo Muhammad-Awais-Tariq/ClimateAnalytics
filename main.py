@@ -1,18 +1,23 @@
 import numpy as np
+import pandas as pd
 
 cities_name = {"Kamra" : 0 , "Islamabad" : 1 , "Karachi" : 2 , "Kohat" : 3}
 months = {0 : "Jan" , 1 : "Feb" , 2 : "Mar" ,  3: "Apr" , 4 : "May" , 5: "Jun" , 6: "Jul" , 7: "Aug"  , 8: "Sep" , 9: "Oct" , 10: "Nov" , 11 : "Dec"}
 cities_idx = {0 :"Kamra" , 1: "Islamabad" , 2 :"Karachi"  ,3 : "Kohat"}
+
 def get_data():
     """
     This function generates the data of 4 cities randomly and then returns that in the form of the numpy array
     """
     
-
     #using numpy
     final2 = np.random.randint(low=(20,40,0) , high=(45,90,300) , size=(4,12,3)) #  4 ctities 12 moths and 3 readings temp , humidity , rainfall 
 
     return final2
+
+def get_csv(location):
+    weater_df = pd.read_csv(location)
+    return weater_df
 
 def avg(data):
     required_data = data [:,:,0]
@@ -88,7 +93,8 @@ def unusual_rainfall(data):
         )
         
 def main():
-    complete_data = get_data()
+    weather_df = get_csv("climate_data(1).csv")
+    print(weather_df)
 
 if __name__ == "__main__":
     main()
