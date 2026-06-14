@@ -96,6 +96,14 @@ def get_city_data(df , city):
     city_df = df[df.City == city]
     print(city_df)
 
+def get_weather_partition(df , weather): # 0 for summer 1 for winter
+    if weather == 0:
+        new_df = df[(df.Month == "Jan") | (df.Month == "Feb") | (df.Month == "Mar") | (df.Month == "Apr") | (df.Month == "May") | (df.Month == "Jun")  ]
+    elif weather == 1:
+        new_df = df[(df.Month == "Jul") | (df.Month == "Aug") | (df.Month == "Sep") | (df.Month == "Oct") | (df.Month == "Nov") | (df.Month == "Dec")  ]
+    city_df = new_df.groupby("City")[["Temperature" , "Humidity" , "Rainfall"]].mean()
+    print(city_df)
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
     # print(weather_df.info())
@@ -103,8 +111,8 @@ def main():
     # print(weather_df.columns)
     # print(weather_df.shape)
     # print(weather_df.head())
-    get_city_data(weather_df , "Kamra")
-    
+    # get_city_data(weather_df , "Kamra")
+    get_weather_partition(weather_df , 1)
 
 if __name__ == "__main__":
     main()
