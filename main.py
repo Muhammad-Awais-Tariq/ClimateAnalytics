@@ -91,14 +91,20 @@ def unusual_rainfall(data):
             f"{cities_idx[city_idx]} - {months[month_idx]} - "
             f"{rainfall[city_idx, month_idx]} (UNUSUAL)"
         )
-        
+
+def get_city_data(df , city):
+    city_df = df[df.City == city]
+    print(city_df)
+
 def main():
     weather_df = get_csv("climate_data(1).csv")
-    print(weather_df.info())
-    print(weather_df.describe())
-    print(weather_df.columns)
-    print(weather_df.shape)
-    print(weather_df.head())
+    # print(weather_df.info())
+    # print(weather_df.describe())
+    # print(weather_df.columns)
+    # print(weather_df.shape)
+    # print(weather_df.head())
+    get_city_data(weather_df , "Kamra")
+    
 
 if __name__ == "__main__":
     main()
